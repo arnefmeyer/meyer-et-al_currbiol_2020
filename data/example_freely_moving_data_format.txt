@@ -1,0 +1,11 @@
+The file example_freely_moving.npy contains all data as a single array with columns:
+1: timestamps (s)
+2: head pitch (deg)
+3: head roll (deg)
+4: angular head velocity around the pitch axis (deg/s)
+5: angular head velocity around the roll axis (deg/s)
+6: angular head velocity around the yaw axis (deg/s)
+7: pupil pos. left eye horizontal (deg)
+8: pupil pos. left eye vertical (deg)
+9: pupil pos. right eye horizontal (deg)
+10: pupil pos. right eye vertical (deg)
