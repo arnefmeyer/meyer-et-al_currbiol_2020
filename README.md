@@ -1,4 +1,4 @@
-![filmstrip_mouse.jpg](data/filmstrip_mouse.jpg)
+![filmstrip_mouse.jpg](images/filmstrip_mouse.jpg)
 
 # Meyer et al. Current Biology (2020)
 
@@ -9,7 +9,9 @@ Some code and example data for our paper on head and eye movements in freely mov
 This is still work in progress and more code and data sets will be added in the future. If some specific analysis code or data will be particularly useful, please raise a github issue.
 
 
-### Eye tracking using DeepLabCut
+## Eye tracking using DeepLabCut
+
+![](images/eye_tracking.png)
 
 We used [DeepLabCut](http://www.deeplabcut.org) (DLC) to extract pupil positions from head-mounted camera images. As newer DLC versions now support many of the features that we manually implemented for the paper (e.g., ROI extraction), we strongly recommend using the DLC functions directly. Nevertheless, we provide a simple script (`example_eye_tracking_DLC.py`) outlining the steps for extracting pupil positions along with eye reference points (for automatic alignment of eye axes) from videos recorded using the [head-mounted camera system (mousecam)](https://open-ephys.org/mousecam) that we used in the paper.
 
@@ -66,7 +68,9 @@ Options:
 - deeplabcut (including all dependencies)
 
 
-### Prediction of eye position from head tilt
+## Prediction of eye position from head tilt
+
+![image head tilt](images/fig_head_tilt.png)
 
 The Python script `example_head_tilt.py` reproduces the traces shown in Figure 3. Briefly, eye positions were predicted from head tilt (combined pitch and roll) using a nonlinear (or optionally linear) regression model. Predictions were done using cross-validation (n=5 fold).
 
