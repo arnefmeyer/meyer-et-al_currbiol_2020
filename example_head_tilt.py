@@ -18,32 +18,7 @@ from sklearn.model_selection import KFold
 from sklearn.metrics import explained_variance_score
 
 import mousecam.movement.eye as mme
-import mousecam.util.plotting as mcp
-
-
-EYE_COLORS = {'horizontal': {'left': [.75*c+.25 for c in mcp.NICE_COLORS['deep sky blue']],
-                             'right': [.75*c for c in mcp.NICE_COLORS['deep sky blue dark']]},
-              'vertical': {'left': [.5*c+.5 for c in mcp.NICE_COLORS['new mpl red']],
-                           'right': [.75*c for c in mcp.NICE_COLORS['new mpl red']]}}
-
-
-def load_data():
-    # get head tilt and eye position data as Python dictionary
-
-    data_file = op.join(op.split(__file__)[0], 'data', 'example_freely_moving.npy')
-    arr = np.load(data_file)
-
-    # wrap into a dict
-    data = {'timestamps': arr[:, 0],
-            'pitch': arr[:, 1],
-            'roll': arr[:, 2],
-            'angular_head_velocity': {'pitch': arr[:, 3],
-                                      'roll': arr[:, 4],
-                                      'yaw': arr[:, 5]},
-            'pupil': {'left': arr[:, [6, 7]],  # [horiz, vert]
-                      'right': arr[:, [8, 9]]}}  # [horiz, vert]
-
-    return data
+from helpers import load_data, simple_xy_axes, set_font_axes, adjust_axes, EYE_COLORS
 
 
 def create_regression_data(data,
@@ -152,8 +127,8 @@ def prettify_axes(ax, time_interval):
     ax.set_yticklabels([' -25', '+25'])
     ax.spines['right'].set_bounds(-25, 25)
 
-    mcp.set_font_axes(ax)
-    mcp.adjust_axes(ax, pad=2)
+    set_font_axes(ax)
+    adjust_axes(ax, pad=2)
 
 
 def plot_trace(ax, results_eyes,
@@ -249,9 +224,9 @@ def plot_scatter_positions(ax, results_eyes,
     ax.spines['left'].set_bounds(-60, 60)
     ax.spines['bottom'].set_bounds(-60, 60)
 
-    mcp.simple_xy_axes(ax)
-    mcp.set_font_axes(ax)
-    mcp.adjust_axes(ax, pad=2)
+    simple_xy_axes(ax)
+    set_font_axes(ax)
+    adjust_axes(ax, pad=2)
 
 
 def run_example(model='nonlinear'):
